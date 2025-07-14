@@ -1,0 +1,18 @@
+import json
+
+# Créer le résultat
+result = {
+    "texte": text,
+    "sentiment": sentiment,
+    "confiance": confidence
+}
+
+# Construire le chemin vers le fichier JSON
+base_name = os.path.splitext(os.path.basename(txt_file))[0]
+output_json = os.path.join("data/sentiments", f"{base_name}_sentiment.json")
+
+# Sauvegarder
+with open(output_json, "w", encoding="utf-8") as f:
+    json.dump(result, f, ensure_ascii=False, indent=4)
+
+print(f"✅ Résultat sauvegardé dans : {output_json}")
