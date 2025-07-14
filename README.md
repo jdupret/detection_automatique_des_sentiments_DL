@@ -45,13 +45,13 @@ detection_automatique_des_sentiments_DL/
 
 ## 🛠️ Étapes de reproduction
 
-### 1 ️⃣ Clonnage du dépot git en local
+### 1. Clonnage du dépot git en local
 ```
 git clone https://github.com/jdupret/detection_automatique_des_sentiments_DL.git
 cd detection_automatique_des_sentiments_DL
 ```
 
-### 3 ️⃣ Installation des dépendances
+### 2. Installation des dépendances
 ```
 pip install -r requirements.txt
 ```
@@ -85,10 +85,10 @@ http://127.0.0.1:8000/docs
 ## 📄 Cas d’usage
 
 ### 🖼️ 1. Interface Gradio
-images/gardio_test_image.png
+![Interface Gradio](images/gardio_test_image.png))
 
 ### 🖼️ 2. API
-images/api_test_image.png
+![API](images/api_test_image.png)
 
 ---
 
