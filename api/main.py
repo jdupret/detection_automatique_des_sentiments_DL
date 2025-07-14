@@ -4,31 +4,31 @@ import os
 import uuid
 import sys
 
-# pour accéder aux modules pipeline
+# Chemin vers le pipeline et appel des fonction
 sys.path.append(os.path.abspath("pipeline"))
+from transcription import audio_transcrit
+from text_analysis import analyse_text
 
-from transcription import transcribe_from_file
-from text_analysis import analyze_sentiment_from_text
-
+# Titre et description de l'API
 app = FastAPI(
     title="Détection de Sentiment dans un Appel Vocal",
     description="Il s'agit d'un API qui permet de transcrire un fichier audio et prédire le sentiment du client (négatif, neutre, positif).",
     version="1.0"
 )
-
+# Définition des composante du pipeline
 @app.post("/analyse/")
 async def analyse_audio(file: UploadFile = File(...)):
-    # sauvegarder temporairement le fichier reçu
-    temp_dir = "temp_uploads"
-    os.makedirs(temp_dir, exist_ok=True)
-    temp_filename = os.path.join(temp_dir, f"{uuid.uuid4()}.wav")
+    # sauvegarde du fichier charger
+    fichier_emp = "fichier_charge"
+    os.makedirs(fichier_emp, exist_ok=True)
+    temp_filename = os.path.join(fichier_emp, f"{uuid.uuid4()}.wav")
 
     with open(temp_filename, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
     # pipeline
-    transcription = transcribe_from_file(temp_filename)
-    sentiment, confidence = analyze_sentiment_from_text(transcription)
+    transcription = audio_transcrit(temp_filename)
+    sentiment, confidence = analyse_text(transcription)
 
     # nettoyer
     os.remove(temp_filename)

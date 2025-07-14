@@ -2,7 +2,7 @@
 
 ## 👨‍💻 Etudiant
 > Projet de Deep Learning  
-> Réalisé par : *[MILOUNGOU JEDIDJA WL DUPRET JOYEUX]*  
+> Réalisé par : **MILOUNGOU JEDIDJA WL DUPRET JOYEUX**  
 > Date : Juillet 2025
 
 ## Contexte

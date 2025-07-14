@@ -2,16 +2,16 @@ import gradio as gr
 import sys
 import os
 
-# ajouter le chemin vers pipeline
+# Chemin vers le pipeline et appel des fonction
 sys.path.append(os.path.abspath("pipeline"))
 
-from transcription import transcribe_from_file
-from text_analysis import analyze_sentiment_from_text
+from transcription import audio_transcrit
+from text_analysis import analyse_text
 
 # === Pipeline ===
 def process_pipeline(audio_path):
-    transcription = transcribe_from_file(audio_path)
-    sentiment, confidence = analyze_sentiment_from_text(transcription)
+    transcription = audio_transcrit(audio_path)
+    sentiment, confidence = analyse_text(transcription)
     sentiment_str = f"{sentiment} (confiance : {confidence:.2f})"
     return transcription, sentiment_str
 

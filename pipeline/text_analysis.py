@@ -3,17 +3,14 @@ import torch
 import sys
 import os
 
-# Charger le modèle UNE SEULE FOIS
+# Chargement des modèles
 model_name = "cardiffnlp/twitter-xlm-roberta-base-sentiment"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForSequenceClassification.from_pretrained(model_name)
 
 labels = ["négatif", "neutre", "positif"]
 
-def analyze_sentiment_from_text(text):
-    """
-    Analyse le sentiment d’un texte et retourne (sentiment, confiance)
-    """
+def analyse_text(text):
     inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True)
     with torch.no_grad():
         outputs = model(**inputs)
@@ -25,7 +22,7 @@ def analyze_sentiment_from_text(text):
 
     return predicted_label, confidence
 
-
+# Analyse du sentiment de la transcription
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python sentiment_analyzer.py <transcriptions/transcription.txt>")
